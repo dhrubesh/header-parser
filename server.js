@@ -8,9 +8,14 @@ app.use(morgan('dev'))
 
 app.get(API, function (req, res) {
     console.log(req)
-    var language = req.headers['accept-language']
-    console.log(language)
-  res.send('Hello World!')
+    var language = req.headers['accept-language'].split(',');
+    var userAgent = req.headers['user-agent']
+    var host = req.headers.host
+    res.json({
+        language : language[0],
+        software : userAgent,
+        ipaddress : host
+    });
 })
 
 app.listen(8080, function () {
