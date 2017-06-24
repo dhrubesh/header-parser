@@ -8,6 +8,7 @@ app.use(morgan('dev'))
 
 app.get(API, function (req, res) {
     console.log(req)
+    // console.log(res)
     var language = req.headers['accept-language'].split(',');
     var userAgent = req.headers['user-agent']
     var host = req.headers.host
